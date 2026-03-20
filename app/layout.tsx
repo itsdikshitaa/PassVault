@@ -1,27 +1,48 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { Geist } from "next/font/google"
-import { Manrope } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Fraunces } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
+import { PWARegister } from "@/components/pwa-register"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css"
 
-const geist = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist",
+  variable: "--font-space-grotesk",
 })
 
-const manrope = Manrope({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-fraunces",
 })
 
 export const metadata: Metadata = {
   title: "SecurePass - Advanced Password Generator",
   description: "Generate secure passwords with our advanced interface and management tools",
-  creator: "therayyanawaz",
+  authors: [{ name: "Dikshita Konwar" }],
+  creator: "Dikshita Konwar",
+  applicationName: "SecurePass",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SecurePass",
+  },
+  icons: {
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#8a4931",
+  colorScheme: "light dark",
 }
 
 export default function RootLayout({
@@ -30,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${manrope.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${spaceGrotesk.variable} ${fraunces.variable} antialiased`} suppressHydrationWarning>
       <body>
         <ThemeProvider
           attribute="class"
@@ -38,6 +59,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <PWARegister />
           {children}
           <Toaster />
         </ThemeProvider>
