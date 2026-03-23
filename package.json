@@ -1,7 +1,12 @@
 {
-  "name": "my-v0-project",
+  "name": "securepass",
   "version": "0.1.0",
   "private": true,
+  "author": "Dikshita Konwar",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -52,7 +57,7 @@
     "geist": "^1.3.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
+    "next": "15.2.8",
     "next-themes": "^0.4.6",
     "react": "^19",
     "react-day-picker": "9.8.0",
